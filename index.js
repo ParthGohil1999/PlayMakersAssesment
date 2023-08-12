@@ -25,8 +25,6 @@ async function verifyBadgeImage(inputPath) {
       }
     });
 
-    // You can add color analysis code here to check if the colors give a "happy" feeling
-
     return "Badge image is valid.";
   } catch (error) {
     return "An error occurred: " + error.message;
@@ -51,11 +49,9 @@ async function convertToBadgeImage(inputPath, outputPath) {
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance > radius) {
-        image.bitmap.data[idx + 3] = 0; // Set alpha channel to 0 for pixels outside the circle
+        image.bitmap.data[idx + 3] = 0; 
       }
     });
-
-    // You can add color manipulation code here to give a "happy" feeling
 
     await image.writeAsync(outputPath);
     return "Image converted to badge specifications.";
